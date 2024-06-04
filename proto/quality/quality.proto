@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package  quality;
+option go_package = "github.com/quocbang/distribute-video-processor/proto/quality";
+
+enum Quality {
+  UNSPECIFIED = 0;
+  Q360P = 360;
+  Q480P = 480;
+  Q720P = 720;
+  Q1080P = 1080;
+}
