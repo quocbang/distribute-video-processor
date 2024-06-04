@@ -1,0 +1,35 @@
+version: '3'
+
+name: 'distribute-video-processor'
+
+services:
+  postgres:
+    platform: linux/amd64
+    restart: always
+    image: postgres:15-alpine3.18
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "${DB_PORT}:5432"
+    networks:
+      - dvp
+    volumes:
+      - dvp-postgres:/var/lib/postgresql
+
+  redis:
+    restart: always
+    image: redis:latest
+    ports:
+      - "${REDIS_PORT}:6379"
+    networks:
+      - dvp
+    volumes:
+      - dvp-redis:/data      
+volumes:
+  dvp-postgres:
+  dvp-redis:
+
+networks:
+  dvp:  

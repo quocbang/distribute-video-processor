@@ -1,0 +1,5 @@
+development:
+  dialect: postgresql
+  datasource: root:123456@tcp(127.0.0.1:33062)/distribute?parseTime=true
+  dir: migrations
+  table: gorp_migrations
